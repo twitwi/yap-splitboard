@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { NSplit } from 'naive-ui'
+import { ref, watchEffect } from 'vue'
 
 export type NestedSplitDescriptor = {
     direction: 'horizontal' | 'vertical'
@@ -13,10 +14,16 @@ const props = defineProps<{
     descriptor: NestedSplitDescriptor
 }>()
 
+const size = ref(props.descriptor.position)
+
+watchEffect(() => {
+    size.value = props.descriptor.position
+})
+
 </script>
 
 <template>
-    <NSplit :direction="props.descriptor.direction" :default-size="props.descriptor.position">
+    <NSplit :direction="props.descriptor.direction" v-model:size="size">
         <template #1>
             <NestedSplit v-if="typeof props.descriptor.first === 'object'" :descriptor="props.descriptor.first" />
             <iframe v-else-if="props.descriptor.first.startsWith('https://')" :src="props.descriptor.first"></iframe>
