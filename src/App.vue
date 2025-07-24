@@ -1,18 +1,9 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
 import ReloadPrompt from './components/ReloadPrompt.vue'
+import HomeView from './views/HomeView.vue';
 </script>
 
 <template>
-  <header>
-    <!--
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    -->
-  </header>
-
-  <RouterView />
+  <HomeView />
   <ReloadPrompt />
 </template>
