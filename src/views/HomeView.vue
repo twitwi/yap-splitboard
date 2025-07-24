@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { NestedSplitDescriptor } from '@/components/NestedSplit.vue';
 import NestedSplit from '@/components/NestedSplit.vue';
+import { computed, ref } from 'vue';
 
 //import { useSimpleStore } from '@/stores/simple'
 //const simple = useSimpleStore()
@@ -39,8 +40,15 @@ function parseLayout(layoutString: string): NestedSplitDescriptor {
   return parseItem(layoutString.replace(/ /g, ''))[0] as NestedSplitDescriptor
 }
 
-const h = window.location.hash
-const descriptor = parseLayout(h ? decodeURIComponent(h.substring(1)) : '| -7BZ -CO')
+const spec = ref('')
+const descriptor = computed(() => parseLayout(spec.value))
+
+function updateSpec() {
+  const h = window.location.hash
+  spec.value = h ? decodeURIComponent(h.substring(1)) : '| -7BZ -CO'
+}
+updateSpec()
+addEventListener("hashchange", updateSpec)
 </script>
 
 <template>
