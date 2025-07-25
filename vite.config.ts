@@ -23,9 +23,9 @@ export default defineConfig({
         config: true,
       },
       manifest: {
-        name: 'Nesplit Dashboard',
-        short_name: 'nesplit',
-        description: 'This is Nesplit, a nested split dashboard',
+        name: 'yap-SplitBoard',
+        short_name: 'yap-splitboard',
+        description: 'yap-SplitBoard is a nested split dashboard to aggregate small applications.',
         theme_color: '#445566',
       },
     }),

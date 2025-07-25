@@ -1,6 +1,6 @@
 {
-  "name": "nesplit-dashboard",
-  "version": "0.0.2",
+  "name": "yap-splitboard",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
