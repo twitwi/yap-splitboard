@@ -11,10 +11,10 @@ const apps: Record<string, string> = {
   H: app('habits'),
   B: app('bbox'),
   C: app('chop'),
+  E: app('lsedit'),
   O: 'https://dl.heeere.com/2025-03-overtypst/#/viewonly',
-  Z: 'lseditor',
 }
-const DEMO_SPEC = '| -7BZ -CO'
+const DEMO_SPEC = '| -7BE -CO'
 
 // | or -, possibly a digit (*10% for position) then 2 letters (or recurse)
 // |5         -7 B Z          -5 C O
