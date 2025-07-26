@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { NestedSplitDescriptor } from '@/components/NestedSplit.vue';
 import NestedSplit from '@/components/NestedSplit.vue';
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 
-//import { useSimpleStore } from '@/stores/simple'
-//const simple = useSimpleStore()
+import { useSimpleStore } from '@/stores/simple'
+const saved = useSimpleStore()
 
 const app = (name: string) => `https://apps.heeere.com/${name}/`
 const apps: Record<string, string> = {
@@ -41,12 +41,15 @@ function parseLayout(layoutString: string): NestedSplitDescriptor {
   return parseItem(layoutString.replace(/ /g, ''))[0] as NestedSplitDescriptor
 }
 
-const spec = ref('')
-const descriptor = computed(() => parseLayout(spec.value))
+const descriptor = computed(() => parseLayout(saved.spec))
 
 function updateSpec() {
   const h = window.location.hash
-  spec.value = h ? decodeURIComponent(h.substring(1)) : DEMO_SPEC
+  if (h !== '') {
+    saved.spec = decodeURIComponent(h.substring(1))
+  } else if (saved.spec === '') {
+    saved.spec = DEMO_SPEC
+  }
 }
 updateSpec()
 addEventListener("hashchange", updateSpec)
