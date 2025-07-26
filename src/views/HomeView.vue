@@ -6,14 +6,15 @@ import { computed, ref } from 'vue';
 //import { useSimpleStore } from '@/stores/simple'
 //const simple = useSimpleStore()
 
-const local = (name: string) => `https://dl.heeere.com/${name}`
+const app = (name: string) => `https://apps.heeere.com/${name}/`
 const apps: Record<string, string> = {
-  R: local('2025-04-renfollow/'),
-  B: local('2025-bboxy/'),
-  C: local('2025-07-schopper/'),
-  O: local('2025-03-overtypst/#/viewonly'),
+  H: app('habits'),
+  B: app('bbox'),
+  C: app('chop'),
+  O: 'https://dl.heeere.com/2025-03-overtypst/#/viewonly',
   Z: 'lseditor',
 }
+const DEMO_SPEC = '| -7BZ -CO'
 
 // | or -, possibly a digit (*10% for position) then 2 letters (or recurse)
 // |5         -7 B Z          -5 C O
@@ -45,7 +46,7 @@ const descriptor = computed(() => parseLayout(spec.value))
 
 function updateSpec() {
   const h = window.location.hash
-  spec.value = h ? decodeURIComponent(h.substring(1)) : '| -7BZ -CO'
+  spec.value = h ? decodeURIComponent(h.substring(1)) : DEMO_SPEC
 }
 updateSpec()
 addEventListener("hashchange", updateSpec)
