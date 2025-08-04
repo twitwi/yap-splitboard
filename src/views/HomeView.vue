@@ -11,6 +11,7 @@ const apps: Record<string, string> = {
   H: app('habits'),
   B: app('bbox'),
   C: app('chop'),
+  F: app('flash'),
   E: app('lsedit'),
   O: 'https://dl.heeere.com/2025-03-overtypst/#/viewonly',
 }
